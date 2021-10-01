@@ -23,7 +23,7 @@ namespace App.Services.Menu
         {
             _menuOptionsService.AddOption("1) Insert a new endpoint", 1, Insert);
             _menuOptionsService.AddOption("2) Edit an existing endpoint", 2, Edit);
-            _menuOptionsService.AddOption("3) Delete an existing endpoint", 3, () => {});
+            _menuOptionsService.AddOption("3) Delete an existing endpoint", 3, Delete);
             _menuOptionsService.AddOption("4) List all endpoints", 4, () => {});
             _menuOptionsService.AddOption("5) Find a endpoint by 'Endpoint Serial Number'", 5, () => {});
             _menuOptionsService.AddOption("6) Exit", 6, Exit);
@@ -86,6 +86,21 @@ namespace App.Services.Menu
                 Environment.Exit(0);
 
             _menuOptionsService.ShowOptions();
+        }
+
+        public void Delete()
+        {
+            Console.WriteLine("Enter the serial number:");
+            string serialNumber = Console.ReadLine();
+
+            Console.WriteLine("Do you really want to delete this EndPoint? (yes/no)");
+            string answer = Console.ReadLine();
+
+            if (answer.ToLower() == "yes")
+            {
+                _companyService.Remove(serialNumber);
+                Console.WriteLine("EndPoint successfully removed");
+            }
         }
     }
 }

@@ -6,5 +6,6 @@ namespace App.Services.Contracts
     {
         void Exit();
         void Edit();
+        void Delete();
     }
 }

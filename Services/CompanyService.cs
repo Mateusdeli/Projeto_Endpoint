@@ -42,5 +42,11 @@ namespace App.Services
             }
             throw new SerialNumberNotFoundException("Endpoint with the serial number entered was not found");
         }
+
+        public void Remove(string serialNumber)
+        {
+            var result = FindBySerialNumber(serialNumber);
+            _companyRepository.Remove(result.Item1);      
+        }
     }
 }

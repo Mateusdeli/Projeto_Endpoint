@@ -10,5 +10,6 @@ namespace App.Services.Contracts
         void Insert(EndPoint endPoint);
         void Edit(EndPoint endPoint, States state);
         Tuple<EndPoint, bool> FindBySerialNumber(string serialNumber);
+        void Remove(string serialNumber);
     }
 }
