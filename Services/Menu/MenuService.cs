@@ -15,7 +15,7 @@ namespace App.Services.Menu
             _menuOptionsService = menuOptionsService;
             SetOptions();
         }
-        
+
         private void SetOptions()
         {
             _menuOptionsService.AddOption("1) Insert a new endpoint", 1, () => {});
@@ -23,7 +23,18 @@ namespace App.Services.Menu
             _menuOptionsService.AddOption("3) Delete an existing endpoint", 3, () => {});
             _menuOptionsService.AddOption("4) List all endpoints", 4, () => {});
             _menuOptionsService.AddOption("5) Find a endpoint by 'Endpoint Serial Number'", 5, () => {});
-            _menuOptionsService.AddOption("6) Exit", 6, () => {});
+            _menuOptionsService.AddOption("6) Exit", 6, Exit);
+        }
+
+        public void Exit()
+        {
+            Console.WriteLine("Do you really want to exit the application? (yes/no)");
+            string answer = Console.ReadLine();
+            
+            if (answer.ToLower() == "yes")
+                Environment.Exit(0);
+
+            _menuOptionsService.ShowOptions();
         }
     }
 }
