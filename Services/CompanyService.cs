@@ -27,5 +27,20 @@ namespace App.Services
             }
             throw new EndPointNotFoundException("This Endpoint already exists.");
         }
+
+        public void Edit(EndPoint endPoint, States state)
+        {
+            _companyRepository.Edit(endPoint, state);
+        }
+
+        public Tuple<EndPoint, bool> FindBySerialNumber(string serialNumber)
+        {
+            var endPoint = _companyRepository.FindBy(serialNumber);
+            if (endPoint != null)
+            {
+                return new Tuple<EndPoint, bool>(endPoint, true);
+            }
+            throw new SerialNumberNotFoundException("Endpoint with the serial number entered was not found");
+        }
     }
 }

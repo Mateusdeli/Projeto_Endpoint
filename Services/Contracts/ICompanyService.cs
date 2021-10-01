@@ -8,5 +8,7 @@ namespace App.Services.Contracts
     public interface ICompanyService
     {
         void Insert(EndPoint endPoint);
+        void Edit(EndPoint endPoint, States state);
+        Tuple<EndPoint, bool> FindBySerialNumber(string serialNumber);
     }
 }
