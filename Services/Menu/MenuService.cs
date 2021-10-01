@@ -24,7 +24,7 @@ namespace App.Services.Menu
             _menuOptionsService.AddOption("1) Insert a new endpoint", 1, Insert);
             _menuOptionsService.AddOption("2) Edit an existing endpoint", 2, Edit);
             _menuOptionsService.AddOption("3) Delete an existing endpoint", 3, Delete);
-            _menuOptionsService.AddOption("4) List all endpoints", 4, () => {});
+            _menuOptionsService.AddOption("4) List all endpoints", 4, GetAll);
             _menuOptionsService.AddOption("5) Find a endpoint by 'Endpoint Serial Number'", 5, FindBySerialNumber);
             _menuOptionsService.AddOption("6) Exit", 6, Exit);
         }
@@ -123,6 +123,22 @@ namespace App.Services.Menu
 
                 Console.ReadKey();
             }
+        }
+
+        public void GetAll()
+        {
+            var endPointList = _companyService.GetAll();
+            foreach (var endpoint in endPointList)
+            {
+                Console.WriteLine("--------------------------------------------");
+                Console.WriteLine("ModelId: " + endpoint.ModelId.ToString());
+                Console.WriteLine("Serial Number: " + endpoint.SerialNumber.ToString());
+                Console.WriteLine("Number: " + endpoint.Number.ToString());
+                Console.WriteLine("Firmware Version: " + endpoint.FirmwareVersion.ToString());
+                Console.WriteLine("State: " + endpoint.State.ToString());
+                Console.WriteLine("--------------------------------------------");
+            }
+            Console.ReadKey();
         }
     }
 }

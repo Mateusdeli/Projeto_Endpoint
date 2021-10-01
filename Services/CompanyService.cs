@@ -48,5 +48,15 @@ namespace App.Services
             var result = FindBySerialNumber(serialNumber);
             _companyRepository.Remove(result.Item1);      
         }
+
+        public ICollection<EndPoint> GetAll()
+        {
+            var endPointList = _companyRepository.GetAll();
+            if (endPointList.Count > 0)
+            {
+                return endPointList;
+            }
+            throw new EndPointNotFoundException("No endpoint was found");
+        }
     }
 }

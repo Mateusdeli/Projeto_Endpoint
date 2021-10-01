@@ -4,6 +4,7 @@ namespace App.Services.Contracts
 {
     public interface IMenuService
     {
+        void GetAll();
         void Exit();
         void Edit();
         void Delete();
